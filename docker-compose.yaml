@@ -1,0 +1,12 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: rover
+      POSTGRES_PASSWORD: rover123
+      POSTGRES_DB: marsdb
+  app:
+    image: mars-rover-node-app
+    ports:
+      - 3000:3000
