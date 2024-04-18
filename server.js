@@ -10,7 +10,7 @@ app.post('/setup', async (req, res) => {
   let message = ""
   try {
     // rovers table
-    await pool.query(``/*sql*/`
+    await pool.query(/*sql*/`
       CREATE TABLE rovers(
         name VARCHAR(255) NOT NULL,
         x_position INT,
@@ -18,17 +18,17 @@ app.post('/setup', async (req, res) => {
         direction VARCHAR(1) CHECK (direction IN ('N', 'S', 'E', 'W')),
         PRIMARY KEY (name)
       )
-    ```)
+    `)
 
     // mars map table
-    await pool.query(``/*sql*/`
+    await pool.query(/*sql*/`
       CREATE TABLE mars(
         x INT NOT NULL,
         y INT NOT NULL,
         obstacle BOOLEAN,
         PRIMARY KEY (x, y)
       )
-    ```)
+    `)
     res.status(200).send({ message: "Setup completed successfully"})
   } catch (err) {
     console.log(err)
@@ -64,9 +64,9 @@ app.post('/initialize_rover', async (req, res) => {
   const y = 0
 
   try {
-    await pool.query(/*sql*/`INSERT INTO rovers (name, x_position, y_position, direction) VALUES (${name}, ${x}, ${y}, ${direction})`)
+    await pool.query(/*sql*/`INSERT INTO rovers (name, x_position, y_position, direction) VALUES ('${name}', ${x}, ${y}, '${direction}')`)
     res.status(200).send({
-      message: `Successfully initialized ${name} rover with starting direction ${direction} and default position (${x}, ${y})`
+      message: `Successfully initialized {${name}} rover with starting direction {${direction}} and default position (${x}, ${y})`
     })
   } catch (err) {
     console.log(err)
