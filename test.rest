@@ -1,7 +1,8 @@
-###
+### Setup
 POST http://localhost:3000/setup
-
 ###
+
+### Initialize Map
 POST http://localhost:3000/initialize_map
 Content-Type: application/json
 
@@ -9,8 +10,9 @@ Content-Type: application/json
   "x_map_size": 100,
   "y_map_size": 100
 }
-
 ###
+
+### Initialize Rover
 POST http://localhost:3000/initialize_rover
 Content-Type: application/json
 
@@ -18,3 +20,29 @@ Content-Type: application/json
   "name": "rover1",
   "direction": "N"
 }
+###
+
+### Move Rover
+POST http://localhost:3000/move_rover
+Content-Type: application/json
+
+{
+  "name": "rover2",
+  "commands": [
+    "b",
+    "r",
+    "f",
+    "f",
+    "r",
+    "b",
+    "b",
+    "l",
+    "f",
+    "f"
+  ]
+}
+###
+
+### Get Mars Map
+GET http://localhost:3000/get_mars_map
+###
