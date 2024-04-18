@@ -1,0 +1,11 @@
+###
+POST http://localhost:3000/setup
+
+###
+POST http://localhost:3000/initialize_map
+Content-Type: application/json
+
+{
+  "x_map_size": 100,
+  "y_map_size": 100
+}
